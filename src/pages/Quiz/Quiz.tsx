@@ -95,7 +95,7 @@ export default function Quiz() {
           <h1 className='text-3xl font-bold mb-4'>Quiz Results</h1>
           <div className='flex flex-col md:flex-row items-center justify-between w-full gap-3 mb-6'>
             <motion.div
-              className='flex flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left justify-center rounded-2xl gap-2'
+              className='flex flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-center md:text-left justify-center rounded-2xl gap-2'
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
@@ -105,7 +105,7 @@ export default function Quiz() {
             </motion.div>
 
             <motion.div
-              className='flex flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left justify-center rounded-2xl gap-2'
+              className='flex flex-col w-full md:w-1/3 text-center bg-gray-200 py-6 px-5 md:text-left justify-center rounded-2xl gap-2'
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
@@ -115,7 +115,7 @@ export default function Quiz() {
             </motion.div>
 
             <motion.div
-              className='flex flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left justify-center rounded-2xl gap-2'
+              className='flex flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-center md:text-left justify-center rounded-2xl gap-2'
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.5 }}
