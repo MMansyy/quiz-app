@@ -23,7 +23,7 @@ export default function QuizCard({ quiz, size }: { quiz: Quiz, size: 'small' | '
                     <h3 className='text-lg font-semibold line-clamp-1'>{quiz.quizTitle}</h3>
                     <p className='text-gray-500 mb-4'>{quiz.quizDesc}</p>
                     <div className="mt-auto w-full">
-                        <Link to={`/quiz/${quiz.quizId}`} className='w-full block text-center bg-black text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors cursor-pointer'>
+                        <Link to={`/quiz/${quiz.quizId}`} className='w-full block text-center bg-black text-white px-4 py-2 rounded-lg hover:bg-white hover:text-black border transition-all duration-300 cursor-pointer'>
                             Take Quiz
                         </Link>
                     </div>
@@ -42,7 +42,7 @@ export default function QuizCard({ quiz, size }: { quiz: Quiz, size: 'small' | '
                 <h3 className='text-xl font-bold line-clamp-1'>{quiz.quizTitle}</h3>
                 <p className='text-gray-500'>{quiz.quizDesc}</p>
                 <div className="mt-4">
-                    <Link to={`/quiz/${quiz.quizId}`} className='w-full block text-center bg-black text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors cursor-pointer'>
+                    <Link to={`/quiz/${quiz.quizId}`} className='w-full block text-center  bg-black text-white px-4 py-2 rounded-lg hover:bg-white hover:text-black border transition-all duration-300 cursor-pointer'>
                         Take Quiz
                     </Link>
                 </div>
