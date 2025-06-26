@@ -21,9 +21,9 @@ export default function QuizCard({ quiz, size }: { quiz: Quiz, size: 'small' | '
 
                 <div className="flex flex-col flex-1 mt-2">
                     <h3 className='text-lg font-semibold line-clamp-1'>{quiz.quizTitle}</h3>
-                    <p className='text-blue-500 mb-4'>{quiz.quizDesc}</p>
+                    <p className='text-gray-500 mb-4'>{quiz.quizDesc}</p>
                     <div className="mt-auto w-full">
-                        <Link to={`/quiz/${quiz.quizId}`} className='w-full block text-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors cursor-pointer'>
+                        <Link to={`/quiz/${quiz.quizId}`} className='w-full block text-center bg-black text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors cursor-pointer'>
                             Take Quiz
                         </Link>
                     </div>
