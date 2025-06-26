@@ -94,6 +94,7 @@ export default function Quiz() {
           onClick={() => {
             setcounter(1)
             setscore(0)
+            setTimeLeft(600)
             fetchQuiz()
           }}
           className='bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200 cursor-pointer'
@@ -108,7 +109,7 @@ export default function Quiz() {
     <section>
       <div>
         <p className='font-semibold'>Question {counter} of 10</p>
-        <div className="w-full mt-3 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+        <div className="w-full mt-3 bg-gray-200 rounded-full h-2.5">
           <div className="bg-black h-2.5 rounded-full transition-all duration-300" style={{ width: `${counter * 10}%` }} />
         </div>
       </div>
