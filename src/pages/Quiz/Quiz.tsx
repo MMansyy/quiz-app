@@ -94,6 +94,7 @@ export default function Quiz() {
           onClick={() => {
             setcounter(1)
             setscore(0)
+            setTimeLeft(600)
             fetchQuiz()
           }}
           className='bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200 cursor-pointer'
