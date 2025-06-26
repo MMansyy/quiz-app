@@ -2,6 +2,7 @@ import axios from 'axios'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Spinner from '../../components/Spinner/Spinner';
 
 export interface QuizQuestion {
   type: "multiple" | "boolean";
@@ -28,16 +29,24 @@ export default function Quiz() {
   const [shuffuledQuestions, setshuffuledQuestions] = useState<string[]>([])
   const [timeLeft, setTimeLeft] = useState(600)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)
 
   async function fetchQuiz() {
+    setLoading(true)
     try {
       const response = await axios.get(`https://opentdb.com/api.php?amount=10&category=${quizId}&difficulty=medium`)
       const data = response.data.results
       setquestions(data)
       setcounter(1)
       setcurrentQuestion(data[0]?.question)
+      setLoading(false)
+
     } catch (error) {
       console.error('Error fetching quiz:', error)
+      setTimeout(() => {
+        fetchQuiz();
+      }, 2500);
+
     }
   }
 
@@ -73,36 +82,67 @@ export default function Quiz() {
   const minutes = Math.floor(timeLeft / 60)
   const seconds = timeLeft % 60
 
-if ((timeLeft === 0 || counter > questions.length) && questions.length > 0) {
+  if ((timeLeft === 0 || counter > questions.length) && questions.length > 0) {
     return (
-      <section className='flex flex-col items-center justify-center '>
-        <h1 className='text-3xl font-bold mb-4'>Quiz Results</h1>
-        <div className='flex flex-col md:flex-row items-center justify-between w-full gap-3 mb-6'>
-          <div className='flex  flex-col  w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left  justify-center rounded-2xl gap-2 '>
-            <p className='text-lg  font-semibold'>Score</p>
-            <p className='text-3xl font-bold'>{score / 10 * 100}%</p>
-          </div>
-          <div className='flex  flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left  justify-center rounded-2xl gap-2 '>
-            <p className='text-lg  font-semibold'>Correct Answers</p>
-            <p className='text-3xl font-bold'>{score}</p>
-          </div>
-          <div className='flex  flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left  justify-center rounded-2xl gap-2 '>
-            <p className='text-lg  font-semibold'>Incorrect Answers</p>
-            <p className='text-3xl font-bold'>{10 - score}</p>
-          </div>
-        </div>
-        <button
-          onClick={() => {
-            setcounter(1)
-            setscore(0)
-            setTimeLeft(600)
-            fetchQuiz()
-          }}
-          className='bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200 cursor-pointer'
+      <AnimatePresence>
+        <motion.section
+          className='flex flex-col items-center justify-center'
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          Restart Quiz
-        </button>
-      </section>
+          <h1 className='text-3xl font-bold mb-4'>Quiz Results</h1>
+          <div className='flex flex-col md:flex-row items-center justify-between w-full gap-3 mb-6'>
+            <motion.div
+              className='flex flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left justify-center rounded-2xl gap-2'
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <p className='text-lg font-semibold'>Score</p>
+              <p className='text-3xl font-bold'>{(score / 10) * 100}%</p>
+            </motion.div>
+
+            <motion.div
+              className='flex flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left justify-center rounded-2xl gap-2'
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              <p className='text-lg font-semibold'>Correct Answers</p>
+              <p className='text-3xl font-bold'>{score}</p>
+            </motion.div>
+
+            <motion.div
+              className='flex flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left justify-center rounded-2xl gap-2'
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+            >
+              <p className='text-lg font-semibold'>Incorrect Answers</p>
+              <p className='text-3xl font-bold'>{10 - score}</p>
+            </motion.div>
+          </div>
+
+          <motion.button
+            onClick={() => {
+              setcounter(1)
+              setscore(0)
+              setTimeLeft(600)
+              fetchQuiz()
+            }}
+            className='bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200 cursor-pointer'
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+          >
+            Restart Quiz
+          </motion.button>
+        </motion.section>
+      </AnimatePresence>
     )
   }
 
@@ -159,7 +199,7 @@ if ((timeLeft === 0 || counter > questions.length) && questions.length > 0) {
         <div className='mt-5 flex flex-col gap-3'>
           {
             shuffuledQuestions.map((answer, index) => (
-              <div key={index} onClick={() => { setSelectedAnswer(answer) }} className={`w-full rounded-xl border p-4 border-gray-300 transition-all duration-200 ${selectedAnswer === answer ? 'bg-black text-white' : 'bg-transparent'}`}>
+              <div key={index} onClick={() => { setSelectedAnswer(answer) }} className={`w-full rounded-xl border p-4 border-gray-300 transition-all duration-200 cursor-pointer ${selectedAnswer === answer ? 'bg-black text-white' : 'bg-transparent'}`}>
                 <p>{decodeHTML(answer)}</p>
               </div>
             ))
@@ -185,6 +225,7 @@ if ((timeLeft === 0 || counter > questions.length) && questions.length > 0) {
           </button>
         </div>
       </div>
+      {loading && <Spinner />}
     </section>
   )
 }
