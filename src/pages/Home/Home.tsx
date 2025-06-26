@@ -70,6 +70,7 @@ const featuredQuizzes = quizzes.slice(0, 3);
 export default function Home() {
 
     const [filterdQuizes, setfilterdQuizes] = useState<Quiz[]>([...quizzes])
+    const [searchTerm, setSearchTerm] = useState('');
 
 
 
@@ -78,12 +79,16 @@ export default function Home() {
             <div>
                 <h2 className='text-3xl font-bold'>Quizzes</h2>
                 <input onChange={(e) => {
-                    const searchTerm = e.target.value.toLowerCase();
+                    setSearchTerm(e.target.value.toLowerCase());
+                    if (e.target.value === '') {
+                        setfilterdQuizes([...quizzes]);
+                        return;
+                    }
                     const filtered = quizzes.filter(quiz => quiz.quizTitle.toLowerCase().includes(searchTerm));
                     setfilterdQuizes(filtered);
                 }} type='text' placeholder='Search quizzes' className='mt-6 p-2 px-4 border border-gray-300 bg-gray-100 rounded-lg w-full' />
             </div>
-            <div className=''>
+            {searchTerm === '' && <div className=''>
                 <h3 className='text-2xl font-bold my-7'>
                     Featured
                 </h3>
@@ -92,7 +97,7 @@ export default function Home() {
                         <QuizCard size='large' quiz={quiz} key={quiz.quizId} />
                     ))}
                 </div>
-            </div>
+            </div>}
             <div className='my-7'>
                 <h3 className='text-2xl my-7 font-bold'>
                     All Quizzes
