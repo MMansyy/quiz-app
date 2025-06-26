@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
     return (
@@ -6,7 +6,7 @@ export default function Navbar() {
             <div className="container mx-auto px-4 flex justify-between items-baseline">
                 <h2 className="text-xl font-bold">Quiz App</h2>
                 <ul className="flex space-x-4">
-                    <li><a href="/">Home</a></li>
+                    <li><Link to="/">Home</Link></li>
                 </ul>
             </div>
         </nav>

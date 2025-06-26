@@ -78,7 +78,7 @@ export default function Home() {
                 <input type='text' placeholder='Search quizzes' className='mt-6 p-2 border border-gray-300 bg-gray-100 rounded-lg w-full' />
             </div>
             <div className=''>
-                <h3 className='text-2xl font-semibold my-7'>
+                <h3 className='text-2xl font-bold my-7'>
                     Featured
                 </h3>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4'>
@@ -88,7 +88,7 @@ export default function Home() {
                 </div>
             </div>
             <div className='my-7'>
-                <h3 className='text-2xl font-semibold'>
+                <h3 className='text-2xl font-bold'>
                     All Quizzes
                 </h3>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-6 mt-4'>
