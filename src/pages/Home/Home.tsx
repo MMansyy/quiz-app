@@ -1,4 +1,3 @@
-import React from 'react'
 import QuizCard from '../../components/QuizCard/QuizCard';
 
 export default function Home() {
