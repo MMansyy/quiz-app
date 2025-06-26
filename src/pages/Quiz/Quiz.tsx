@@ -73,7 +73,7 @@ export default function Quiz() {
   const minutes = Math.floor(timeLeft / 60)
   const seconds = timeLeft % 60
 
-  if (timeLeft === 0 || counter > questions.length) {
+if ((timeLeft === 0 || counter > questions.length) && questions.length > 0) {
     return (
       <section className='flex flex-col items-center justify-center '>
         <h1 className='text-3xl font-bold mb-4'>Quiz Results</h1>
