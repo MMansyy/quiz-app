@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -114,23 +115,45 @@ export default function Quiz() {
         </div>
       </div>
       <div className='mt-5 flex items-center gap-3'>
+        {/* Minutes */}
         <div className='flex flex-col w-1/2'>
-          <div className='w-full mx-auto bg-gray-200 p-5 rounded-2xl'>
-            <p className='text-center font-semibold text-2xl'>
-              {String(minutes).padStart(2, '0')}
-            </p>
+          <div className='w-full mx-auto bg-gray-200 p-5 rounded-2xl h-[80px] flex items-center justify-center'>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={minutes} // كل تغيير هيعتبره key جديد
+                className='text-center font-semibold text-2xl'
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                {String(minutes).padStart(2, '0')}
+              </motion.p>
+            </AnimatePresence>
           </div>
           <p className='text-center mt-4'>Minutes</p>
         </div>
+
+        {/* Seconds */}
         <div className='flex flex-col w-1/2'>
-          <div className='w-full mx-auto bg-gray-200 p-5 rounded-2xl'>
-            <p className='text-center font-semibold text-2xl'>
-              {String(seconds).padStart(2, '0')}
-            </p>
+          <div className='w-full mx-auto bg-gray-200 p-5 rounded-2xl h-[80px] flex items-center justify-center'>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={seconds}
+                className='text-center font-semibold text-2xl'
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                {String(seconds).padStart(2, '0')}
+              </motion.p>
+            </AnimatePresence>
           </div>
           <p className='text-center mt-4'>Seconds</p>
         </div>
       </div>
+
       <div className='mt-5'>
         <p className='text-2xl font-semibold'>{decodeHTML(currentQuestion)}</p>
         <div className='mt-5 flex flex-col gap-3'>
