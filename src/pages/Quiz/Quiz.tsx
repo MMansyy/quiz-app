@@ -108,7 +108,7 @@ export default function Quiz() {
     <section>
       <div>
         <p className='font-semibold'>Question {counter} of 10</p>
-        <div className="w-full mt-3 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+        <div className="w-full mt-3 bg-gray-200 rounded-full h-2.5">
           <div className="bg-black h-2.5 rounded-full transition-all duration-300" style={{ width: `${counter * 10}%` }} />
         </div>
       </div>
