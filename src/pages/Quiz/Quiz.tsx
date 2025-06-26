@@ -76,16 +76,16 @@ export default function Quiz() {
     return (
       <section className='flex flex-col items-center justify-center '>
         <h1 className='text-3xl font-bold mb-4'>Quiz Results</h1>
-        <div className='flex items-center justify-between w-full gap-3 mb-6'>
-          <div className='flex  flex-col  w-1/3 bg-gray-200 py-6 px-5 text-left  justify-center rounded-2xl gap-2 '>
+        <div className='flex flex-col md:flex-row items-center justify-between w-full gap-3 mb-6'>
+          <div className='flex  flex-col  w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left  justify-center rounded-2xl gap-2 '>
             <p className='text-lg  font-semibold'>Score</p>
             <p className='text-3xl font-bold'>{score / 10 * 100}%</p>
           </div>
-          <div className='flex  flex-col  w-1/3 bg-gray-200 py-6 px-5 text-left  justify-center rounded-2xl gap-2 '>
+          <div className='flex  flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left  justify-center rounded-2xl gap-2 '>
             <p className='text-lg  font-semibold'>Correct Answers</p>
             <p className='text-3xl font-bold'>{score}</p>
           </div>
-          <div className='flex  flex-col  w-1/3 bg-gray-200 py-6 px-5 text-left  justify-center rounded-2xl gap-2 '>
+          <div className='flex  flex-col w-full md:w-1/3 bg-gray-200 py-6 px-5 text-left  justify-center rounded-2xl gap-2 '>
             <p className='text-lg  font-semibold'>Incorrect Answers</p>
             <p className='text-3xl font-bold'>{10 - score}</p>
           </div>
@@ -109,7 +109,7 @@ export default function Quiz() {
       <div>
         <p className='font-semibold'>Question {counter} of 10</p>
         <div className="w-full mt-3 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-          <div className="bg-black h-2.5 rounded-full" style={{ width: `${counter * 10}%` }} />
+          <div className="bg-black h-2.5 rounded-full transition-all duration-300" style={{ width: `${counter * 10}%` }} />
         </div>
       </div>
       <div className='mt-5 flex items-center gap-3'>
