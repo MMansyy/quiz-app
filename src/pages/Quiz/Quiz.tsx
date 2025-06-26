@@ -122,7 +122,7 @@ export default function Quiz() {
           <p className='text-center mt-4'>Minutes</p>
         </div>
         <div className='flex flex-col w-1/2'>
-          <div className='w-full mx-auto bg-gray-200 p-5 rounded-lg'>
+          <div className='w-full mx-auto bg-gray-200 p-5 rounded-2xl'>
             <p className='text-center font-semibold text-2xl'>
               {String(seconds).padStart(2, '0')}
             </p>
