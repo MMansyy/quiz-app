@@ -88,7 +88,7 @@ export default function Home() {
                 </div>
             </div>
             <div className='my-7'>
-                <h3 className='text-2xl font-bold'>
+                <h3 className='text-2xl my-7 font-bold'>
                     All Quizzes
                 </h3>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-6 mt-4'>

@@ -13,7 +13,7 @@ interface Quiz {
 export default function QuizCard({ quiz, size }: { quiz: Quiz, size: 'small' | 'large' }) {
     if (size === 'small') {
         return (
-            <div className="w-56 min-h-64 flex flex-col justify-between">
+            <div className="w-full md:w-56 min-h-64 flex flex-col justify-between">
                 <img
                     src={quiz.quizImg}
                     alt={quiz.quizTitle}
@@ -33,7 +33,7 @@ export default function QuizCard({ quiz, size }: { quiz: Quiz, size: 'small' | '
         )
     }
     return (
-        <div className="w-72">
+        <div className="w-full md:w-72">
             <img
                 src={quiz.quizImg}
                 alt={quiz.quizTitle}
